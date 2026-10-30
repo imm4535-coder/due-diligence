@@ -1,6 +1,6 @@
 {
   "name": "due-diligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "Evidence-led due diligence: offline web app, AI skill and local MCP tools.",
   "type": "module",
