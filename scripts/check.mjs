@@ -7,4 +7,11 @@ for(const ref of ['references/domains.md','references/report-template.md','refer
 const config=JSON.parse(await readFile('app/config.json','utf8'));assert.equal(typeof config.supportUrl,'string');
 const html=await readFile('app/index.html','utf8');for(const file of ['app.mjs','style.css','icon.svg','manifest.webmanifest'])assert.ok(html.includes(file));
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
+for(const role of ['scanner','investigator']){
+  const name='due-diligence-'+role,base='skills/'+name+'/';
+  const content=await readFile(base+'SKILL.md','utf8');assert.ok(content.startsWith('---\nname: '+name+'\ndescription: '));assert.ok(Buffer.byteLength(content)<1048576);
+  for(const match of content.matchAll(/\]\((references\/[^)]+)\)/g))assert.ok((await readFile(base+match[1],'utf8')).length,'Missing contained skill reference');
+  for(const filename of ['handoff-contract.md','plan-example.json','result-example.json'])assert.equal(await readFile(base+'references/'+filename,'utf8'),await readFile('workflow/'+filename,'utf8'),'Handoff reference drift');
+  const agent=await readFile(base+'agents/openai.yaml','utf8');assert.ok(agent.includes('allow_implicit_invocation: '+(role==='scanner'?'true':'false')));
+}
 console.log('Syntax, skill references, configuration and HTML structure checks passed.');

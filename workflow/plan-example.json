@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "dd-plan/1",
+  "planId": "DEMO-AI-VENDOR-001",
+  "revision": 1,
+  "status": "ready",
+  "subject": {"name": "Example AI Vendor — fictional", "kind": "AI service vendor", "jurisdictions": ["Thailand; applicable requirements still need verification"]},
+  "decision": {
+    "question": "Under which conditions should a fictional team run an AI vendor pilot?",
+    "owner": "Pilot owner — fictional role",
+    "deadline": null,
+    "materiality": "Personal-data exposure and unsupported automated decisions could materially change the pilot scope.",
+    "options": [
+      {"id": "O1", "label": "Pilot with personal data only after prerequisites are satisfied"},
+      {"id": "O2", "label": "Restricted pilot using synthetic data and human review"},
+      {"id": "O3", "label": "Defer the pilot"}
+    ]
+  },
+  "basis": {
+    "facts": [{"claim": "The fictional user requires data-use conditions to be clarified before uploading customer records.", "sourceRef": "Synthetic brief, requirement 1; not a real client document"}],
+    "assumptions": ["The pilot can operate on synthetic records while privacy terms are reviewed."],
+    "unknowns": ["Whether signed terms restrict training use.", "Whether error rates are acceptable for the pilot's intended decision."]
+  },
+  "budget": {"maxRetrievals": 3, "maxTaskPasses": 2, "maxReplans": 1, "maxMinutes": 20, "maxPaidCost": 0, "currency": "USD"},
+  "tasks": [
+    {
+      "id": "T1", "domain": "privacy", "question": "Are supplied data-use terms sufficient to consider using customer records?",
+      "decisionLink": "Determines whether O1 is even eligible for human review.",
+      "mandatory": true, "mandatoryBasis": "Explicit requirement in the fictional user brief; not an asserted legal obligation.",
+      "expectedDecisionImpact": "high", "expectedInformationGain": "high", "estimatedEffort": "medium",
+      "priorityRationale": "Data-use uncertainty can block personal-data use before any pilot begins.",
+      "access": "provided_only", "dependsOn": [],
+      "hypotheses": [
+        {"id": "T1-H1", "statement": "Applicable signed terms restrict training use and define deletion obligations.", "wouldSupport": "Applicable signed agreement with specific clauses and an accountable verifier.", "wouldWeaken": "Missing signatures, broad inconsistent terms or absent deletion commitments."},
+        {"id": "T1-H2", "statement": "The supplied materials leave material data-use obligations unresolved.", "wouldSupport": "Only marketing assertions or unsigned draft terms are supplied.", "wouldWeaken": "Applicable signed terms and qualified review resolve the identified gaps."}
+      ],
+      "evidenceTargets": [{"description": "Supplied signed agreement, DPA and retention terms", "preferredSource": "Executed contractual documents supplied by authorized parties", "verification": "Inspect applicability, signatures, clauses and contradictions; obtain qualified review where needed."}],
+      "outcomes": [
+        {"observation": "Terms and required specialist review support the proposed scope.", "optionId": "O1", "action": "Submit personal-data pilot conditions for human approval."},
+        {"observation": "Terms are absent or material questions remain.", "optionId": "O2", "action": "Limit any pilot to synthetic data while resolving the terms."},
+        {"observation": "Synthetic-data isolation cannot be maintained.", "optionId": "O3", "action": "Defer until an acceptable data boundary is established."}
+      ],
+      "stopRules": {"sufficientEvidence": "Relevant terms are inspected and the responsible reviewer can explain remaining obligations.", "unavailableEvidence": "Return blocked and identify the missing document/owner; do not infer compliance.", "budgetExhausted": "Return partial with the personal-data decision gate still open."}
+    },
+    {
+      "id": "T2", "domain": "technology", "question": "Do supplied synthetic-task evaluations support the intended level of human oversight?",
+      "decisionLink": "Determines whether a restricted pilot is useful and what outputs require review.",
+      "mandatory": false, "mandatoryBasis": "",
+      "expectedDecisionImpact": "high", "expectedInformationGain": "medium", "estimatedEffort": "low",
+      "priorityRationale": "An existing synthetic evaluation can expose decision-relevant failures without live customer data.",
+      "access": "provided_only", "dependsOn": [],
+      "hypotheses": [
+        {"id": "T2-H1", "statement": "The evaluation supports a bounded pilot with a workable human-review process.", "wouldSupport": "Representative seeded cases, observed errors and a reviewer workflow that catches material failures.", "wouldWeaken": "Critical misses, unrepresentative examples or no measured reviewer effectiveness."},
+        {"id": "T2-H2", "statement": "The evidence is too weak to justify the intended use without further evaluation.", "wouldSupport": "Unrepresentative sample, missing logs or unsupported acceptance thresholds.", "wouldWeaken": "Relevant independently checked evaluation and documented acceptance criteria."}
+      ],
+      "evidenceTargets": [{"description": "Synthetic evaluation protocol, logs and reviewer observations", "preferredSource": "Provided test records", "verification": "Inspect the denominator, seeded failures, review procedure and relevance to the proposed use; no model run is implied."}],
+      "outcomes": [
+        {"observation": "Evidence supports the bounded review workflow.", "optionId": "O2", "action": "Propose a restricted pilot with stated acceptance criteria."},
+        {"observation": "Critical failures remain or the test does not represent the use case.", "optionId": "O3", "action": "Defer the intended use and commission a targeted evaluation."}
+      ],
+      "stopRules": {"sufficientEvidence": "The observed failure modes and review limits are sufficient to choose a next step.", "unavailableEvidence": "Return inconclusive and identify the missing evaluation record.", "budgetExhausted": "Return the observed evidence and uncertainty; do not invent a pass rate."}
+    }
+  ],
+  "deferred": [{"question": "Would a full enterprise rollout reduce total operating cost?", "whyDeferred": "A rollout decision is not being made in this pilot scope.", "reopenIf": "A bounded pilot meets acceptance criteria and a rollout is proposed."}],
+  "exclusions": ["Fictional example only; no real vendor, legal review, registry search or model evaluation was performed."]
+}

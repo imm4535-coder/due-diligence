@@ -1,7 +1,9 @@
 import {mkdir,cp,rm,readFile,writeFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
+import {prepareSplitPlugins} from './build-split.mjs';
 const root=resolve('.');
+// Keep contained skill references in sync before copying source/assets.
 await rm('dist',{recursive:true,force:true});await rm('release',{recursive:true,force:true});
 await mkdir('release',{recursive:true});await mkdir('dist/downloads',{recursive:true});
 await cp('app','dist',{recursive:true});await cp('src','dist/src',{recursive:true,filter:src=>!src.endsWith('mcp.mjs')});
@@ -15,6 +17,7 @@ const plugin={
 if(config.repositoryUrl)plugin.repository=config.repositoryUrl;
 await mkdir('release/plugin/skills',{recursive:true});await cp('skills/due-diligence','release/plugin/skills/due-diligence',{recursive:true});
 await cp('LICENSE','release/plugin/LICENSE');await writeFile('release/plugin/plugin.json',JSON.stringify(plugin,null,2)+'\n');
+await prepareSplitPlugins();
 const python = spawnSync('python3',['scripts/package.py',root],{stdio:'inherit'});
 if(python.error)throw python.error;if(python.status!==0)throw new Error('Packaging failed');
 process.stdout.write('Built dist/ and release/ (app, source, skill and plugin ZIPs).\n');

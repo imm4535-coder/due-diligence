@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "dd-results/1", "planId": "DEMO-AI-VENDOR-001", "planRevision": 1, "status": "partial",
+  "usage": {"retrievals": 0, "replans": 0, "minutes": null, "paidCost": 0, "currency": "USD", "measurementLimitations": "Fictional documentation example; no elapsed execution time measured and no external retrieval performed."},
+  "sources": [
+    {"id": "S-DEMO-1", "title": "Fictional vendor response", "type": "self_report", "locator": "Synthetic fixture section 1", "asOf": null, "accessedAt": null, "dateLimitations": "Fictional undated example; no real retrieval.", "excerpt": "The vendor says customer data will not train models; a signed agreement is not supplied.", "verification": "Synthetic example content only, not an actual inspected vendor record.", "independenceGroup": "fictional-vendor"},
+    {"id": "S-DEMO-2", "title": "Fictional synthetic-task summary", "type": "primary", "locator": "Synthetic fixture section 2", "asOf": null, "accessedAt": null, "dateLimitations": "Fictional undated example; no actual evaluation.", "excerpt": "A summary exists, but the test protocol and reviewer error logs are absent.", "verification": "Synthetic example only; no real test run or independent confirmation.", "independenceGroup": "fictional-evaluator"}
+  ],
+  "taskResults": [
+    {"taskId": "T1", "status": "blocked", "passes": 1, "finding": "Illustrative result: supplied assertions do not resolve the signed-term requirement.", "sourceIds": ["S-DEMO-1"], "limitations": ["Self-report only; no applicable signed document or qualified legal review."], "remainingUnknowns": ["Applicable training-use and deletion obligations."],
+      "decisionEffect": {"disposition": "hold", "optionId": "O2", "action": "Keep the personal-data gate closed; consider synthetic-only work separately.", "rationale": "The explicit prerequisite for personal-data use remains unresolved."},
+      "hypothesisUpdates": [{"hypothesisId": "T1-H1", "state": "unresolved", "evidenceIds": ["S-DEMO-1"]}, {"hypothesisId": "T1-H2", "state": "supported", "evidenceIds": ["S-DEMO-1"]}]},
+    {"taskId": "T2", "status": "inconclusive", "passes": 1, "finding": "Illustrative result: the summary is insufficient to judge reviewer effectiveness.", "sourceIds": ["S-DEMO-2"], "limitations": ["No representative case set or observed reviewer performance supplied."], "remainingUnknowns": ["Which critical errors the review workflow would miss."],
+      "decisionEffect": {"disposition": "undetermined", "optionId": "O3", "action": "Obtain the evaluation protocol before choosing the intended pilot scope.", "rationale": "The evidence does not yet discriminate a workable review process from an unsafe one."},
+      "hypothesisUpdates": [{"hypothesisId": "T2-H1", "state": "unresolved", "evidenceIds": ["S-DEMO-2"]}, {"hypothesisId": "T2-H2", "state": "supported", "evidenceIds": ["S-DEMO-2"]}]}
+  ],
+  "replanRequests": [{"reason": "The next useful work is obtaining the specific missing agreement and evaluation protocol.", "taskIds": ["T1", "T2"], "decisionImpact": "Could distinguish a feasible synthetic-only pilot from continued deferral, and determine whether personal-data conditions can be reviewed."}],
+  "nextActions": [{"action": "Obtain signed applicable terms and the synthetic evaluation protocol through an authorized owner.", "owner": "Pilot owner — fictional role", "why": "These records can change scope and conditions of the pilot decision.", "stopCondition": "Documents received and inspected, access denied, or remaining investigation budget reached."}]
+}
