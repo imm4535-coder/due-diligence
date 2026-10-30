@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "title": "ตัวอย่างโครงแฟ้ม · ไม่ใช่ผลตรวจจริง",
+  "subject": "ระบุองค์กรที่จะตรวจ",
+  "jurisdiction": "ระบุเขตอำนาจ",
+  "decision": "ระบุการตัดสินใจ",
+  "reviewer": "",
+  "decisionDate": "",
+  "domains": [
+    "finance",
+    "legal",
+    "technology",
+    "security",
+    "privacy",
+    "vendor"
+  ],
+  "sources": [],
+  "answers": {},
+  "findings": [],
+  "createdAt": "2026-10-30T05:32:32.724Z",
+  "updatedAt": "2026-10-30T05:32:32.725Z"
+}

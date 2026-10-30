@@ -1,0 +1,16 @@
+{
+  "name": "diligence-commons",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence-led due diligence: offline web app, AI skill and local MCP tools.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "mcp": "node src/mcp.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

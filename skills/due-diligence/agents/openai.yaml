@@ -1,0 +1,6 @@
+interface:
+  display_name: "Diligence Commons"
+  short_description: "Evidence-led due diligence"
+  default_prompt: "ตรวจสอบเรื่องนี้โดยระบุขอบเขต หลักฐาน ข้อขัดแย้ง ความเสี่ยง และเงื่อนไขก่อนให้มนุษย์ตัดสินใจ"
+policy:
+  allow_implicit_invocation: true

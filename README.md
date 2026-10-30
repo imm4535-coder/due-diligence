@@ -1,0 +1,80 @@
+# Diligence Commons
+
+**ตรวจให้ชัด ก่อนตัดสินใจ · Evidence before confidence**
+
+Open-source due diligence workspace, portable AI skill and local MCP tools. Record sources, investigate 12 domains, track risk owners and export a traceable decision memo. Thai interface; bilingual domain names; AI skill responds in the user's language.
+
+**v0.1 is a screening starter.** Its 36 questions can be extended for the actual industry, jurisdiction and transaction. It does not perform registry searches, authenticate documents, run an LLM, approve transactions or provide professional certification. Evidence coverage measures completeness, never safety.
+
+## Start the app
+
+Requires Node.js 20+ and Python 3.10+. No npm dependencies, API key or account required locally.
+
+```bash
+npm test
+npm run check
+npm run build
+npm start
+```
+
+Open `http://127.0.0.1:4173`. Define scope → record evidence → answer questions and link sources → assign findings → export JSON and Markdown / print to PDF. Click **ลองข้อมูลตัวอย่าง** for a clearly fictional case. The web app caches its assets for offline use after a successful visit. Add-to-home-screen behavior depends on your browser; native app stores are not supported.
+
+Cases stay in browser memory until you explicitly save them in localStorage. Local saves are unencrypted and shared by users of the same browser profile/origin. Back up JSON and avoid entering unnecessary confidential or personal information. Exported case data is never committed by this project; keep local files under ignored `cases/`.
+
+## Install the AI skill
+
+From a source checkout:
+
+```bash
+python3 scripts/install-skill.py --dry-run
+python3 scripts/install-skill.py
+```
+
+Default destination: `~/.agents/skills/due-diligence`. For Claude Code:
+
+```bash
+python3 scripts/install-skill.py --target ~/.claude/skills
+```
+
+The installer refuses to overwrite an existing skill. Reload your host and try: “ใช้ due-diligence ตรวจผู้ให้บริการ AI จากเอกสารที่แนบ แยกหลักฐาน ข้อมูลที่ยังขาด และเงื่อนไขก่อนตัดสินใจ”. Skill loading depends on your host's support; no cross-host installation is claimed without testing.
+
+Release downloads include a self-contained `due-diligence-skill.zip` and an Agent Plugins 1.0 **skills-only** `diligence-commons-plugin.zip`. Use a host's supported skill/plugin import. This is not an OpenAI public directory listing, and importing the skill does not deploy or connect an MCP server.
+
+## Connect local MCP tools
+
+Requires a host supporting **local stdio MCP** and Node.js 20+. Use an absolute path:
+
+```json
+{
+  "mcpServers": {
+    "diligence-commons": {
+      "command": "node",
+      "args": ["/absolute/path/diligence-commons/src/mcp.mjs"]
+    }
+  }
+}
+```
+
+Tools: `diligence_catalog`, `diligence_create_case`, `diligence_assess`, `diligence_report`. They accept explicit inputs and return results without filesystem, network or model access. They validate cases, not their truth. Stdio sessions accept at most 250 messages and 2 MiB buffered input, then stop. Restart the server if its budget is reached. This is not a remote HTTP MCP server or an in-chat interactive MCP App view.
+
+## How readiness works
+
+- An answer counts as documented when its status is known, its rationale is present and at least one linked source has a title, locator, excerpt and acceptable as-of date.
+- Default freshness is 365 days; future dates do not count. MCP callers can set `today` and `freshnessDays` (0–3650). Tighten freshness for volatile information; the UI uses the default.
+- N/A requires a reason and is excluded from the denominator. All-N/A cases are never ready.
+- High or critical unresolved/accepted findings and contradicted answers produce **hold**. A resolved finding still needs current linked evidence to clear its gate. Concern answers, gaps, incomplete scope and other unresolved findings produce **needs review**.
+- Complete documentation produces **ready for human review**, which is never automatic approval. Sources and closure claims remain user supplied.
+
+See [architecture and limitations](docs/ARCHITECTURE.md), [release gates](docs/QUALITY.md), [support model](docs/SUPPORT.md) and [security policy](SECURITY.md).
+
+## Build downloadable packages
+
+`npm run build` produces `dist/` for any static host and `release/` with four ZIPs plus SHA256 checksums. The static app also offers skill, plugin and source downloads. `dist/` and `release/` are generated; CI uploads them to GitHub Releases when a `v*` tag is pushed.
+
+GitHub Pages deployment is a separate workflow triggered manually. Enable GitHub Pages with source **GitHub Actions** in repository settings, then run **Deploy app to Pages**. The source and release workflow do not publish any user's case data.
+
+## Support development
+
+The core is MIT licensed and free to use commercially. Sponsorship is optional; there is no payment integration or automatic charge. A maintainer can add a verified HTTPS support URL to `app/config.json` and configure `.github/FUNDING.yml` using their actual provider account. Until configured, the app explicitly says support payments are not open.
+
+See [SUPPORT.md](docs/SUPPORT.md) for a small, testable funding plan. Contributions: improve questions with sources, translate, test workflows or implement a focused issue. See [CONTRIBUTING.md](CONTRIBUTING.md).
