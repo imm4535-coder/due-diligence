@@ -2,7 +2,7 @@
 """Install only the self-contained skill. Never overwrite an existing skill."""
 from pathlib import Path
 import argparse, shutil
-parser=argparse.ArgumentParser(description='Install Diligence Commons skill for a compatible AI host')
+parser=argparse.ArgumentParser(description='Install Due Diligence skill for a compatible AI host')
 parser.add_argument('--target', type=Path, default=Path.home()/'.agents/skills', help='Host skill parent directory; default ~/.agents/skills')
 parser.add_argument('--dry-run', action='store_true')
 args=parser.parse_args()

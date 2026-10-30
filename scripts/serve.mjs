@@ -13,4 +13,4 @@ createServer(async(req,res)=>{
     const content=await readFile(path);
     res.writeHead(200,{'Content-Type':types[extname(path)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",'Cache-Control':'no-cache'});res.end(content);
   }catch{res.writeHead(404);res.end('Not found. Run npm run build first.');}
-}).listen(port,'127.0.0.1',()=>process.stdout.write(`Diligence Commons: http://127.0.0.1:${port}\n`));
+}).listen(port,'127.0.0.1',()=>process.stdout.write(`Due Diligence: http://127.0.0.1:${port}\n`));

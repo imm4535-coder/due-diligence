@@ -22,7 +22,7 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: diligence-commons-release
+          name: due-diligence-release
           path: |
             release/*.zip
             release/SHA256SUMS.txt
@@ -35,11 +35,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: diligence-commons-release
+          name: due-diligence-release
           path: release
       - name: Create release with downloads
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" release/* --title "Diligence Commons $RELEASE_TAG" --generate-notes
+        run: gh release create "$RELEASE_TAG" release/* --title "Due Diligence $RELEASE_TAG" --generate-notes

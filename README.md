@@ -1,4 +1,4 @@
-# Diligence Commons
+# Due Diligence
 
 **ตรวจให้ชัด ก่อนตัดสินใจ · Evidence before confidence**
 
@@ -38,7 +38,7 @@ python3 scripts/install-skill.py --target ~/.claude/skills
 
 The installer refuses to overwrite an existing skill. Reload your host and try: “ใช้ due-diligence ตรวจผู้ให้บริการ AI จากเอกสารที่แนบ แยกหลักฐาน ข้อมูลที่ยังขาด และเงื่อนไขก่อนตัดสินใจ”. Skill loading depends on your host's support; no cross-host installation is claimed without testing.
 
-Release downloads include a self-contained `due-diligence-skill.zip` and an Agent Plugins 1.0 **skills-only** `diligence-commons-plugin.zip`. Use a host's supported skill/plugin import. This is not an OpenAI public directory listing, and importing the skill does not deploy or connect an MCP server.
+Release downloads include a self-contained `due-diligence-skill.zip` and an Agent Plugins 1.0 **skills-only** `due-diligence-plugin.zip`. Use a host's supported skill/plugin import. This is not an OpenAI public directory listing, and importing the skill does not deploy or connect an MCP server.
 
 ## Connect local MCP tools
 
@@ -47,9 +47,9 @@ Requires a host supporting **local stdio MCP** and Node.js 20+. Use an absolute 
 ```json
 {
   "mcpServers": {
-    "diligence-commons": {
+    "due-diligence": {
       "command": "node",
-      "args": ["/absolute/path/diligence-commons/src/mcp.mjs"]
+      "args": ["/absolute/path/due-diligence/src/mcp.mjs"]
     }
   }
 }

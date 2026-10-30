@@ -32,7 +32,7 @@ export function handleRpc(request) {
   if(!Object.hasOwn(request,'id'))return null;
   if(!(typeof request.id==='string'||Number.isFinite(request.id)||request.id===null))return {jsonrpc:'2.0',id:null,error:{code:-32600,message:'Invalid id'}};
   const response={jsonrpc:'2.0',id:request.id};
-  if(request.method==='initialize')return {...response,result:{protocolVersion:'2025-06-18',capabilities:{tools:{}},serverInfo:{name:'diligence-commons',version:'0.1.0'}}};
+  if(request.method==='initialize')return {...response,result:{protocolVersion:'2025-06-18',capabilities:{tools:{}},serverInfo:{name:'due-diligence',version:'0.1.1'}}};
   if(request.method==='ping')return {...response,result:{}};
   if(request.method==='tools/list')return {...response,result:{tools:toolDefinitions}};
   if(request.method==='tools/call'){

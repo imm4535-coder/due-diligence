@@ -14,13 +14,13 @@ def archive(dest, pairs):
             assert not name.startswith('/') and '..' not in Path(name).parts
             assert not any(x in Path(name).parts for x in ['.git', 'node_modules', '.env', 'cases'])
 archive(out/'due-diligence-skill.zip', [(p, 'due-diligence/'+p.relative_to(root/'skills/due-diligence').as_posix()) for p in (root/'skills/due-diligence').rglob('*') if p.is_file()])
-archive(out/'diligence-commons-plugin.zip', [(p,p.relative_to(out/'plugin').as_posix()) for p in (out/'plugin').rglob('*') if p.is_file()])
+archive(out/'due-diligence-plugin.zip', [(p,p.relative_to(out/'plugin').as_posix()) for p in (out/'plugin').rglob('*') if p.is_file()])
 excluded={'.git','dist','release','node_modules','cases','coverage','__pycache__'}
 source=[p for p in root.rglob('*') if p.is_file() and not (excluded & set(p.relative_to(root).parts)) and not p.name.startswith('.env') and not p.name.endswith(('.log','.pyc'))]
-archive(out/'diligence-commons-source.zip', [(p,'diligence-commons/'+p.relative_to(root).as_posix()) for p in source])
+archive(out/'due-diligence-source.zip', [(p,'due-diligence/'+p.relative_to(root).as_posix()) for p in source])
 for path in out.glob('*.zip'):
     (root/'dist/downloads'/path.name).write_bytes(path.read_bytes())
-archive(out/'diligence-commons-app.zip', [(p,p.relative_to(root/'dist').as_posix()) for p in (root/'dist').rglob('*') if p.is_file()])
+archive(out/'due-diligence-app.zip', [(p,p.relative_to(root/'dist').as_posix()) for p in (root/'dist').rglob('*') if p.is_file()])
 checksums=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in sorted(out.glob('*.zip')))
 (out/'SHA256SUMS.txt').write_text(checksums)
 print(checksums, end='')

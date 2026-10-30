@@ -3,7 +3,7 @@ name: due-diligence
 description: Perform evidence-led due diligence on a business, investment, vendor, contract, technology, AI system, project or asset. Use when the user needs a scoped review, evidence register, contradictions, red flags, gaps, action plan and human decision gates across multiple domains.
 ---
 
-# Diligence Commons
+# Due Diligence
 
 Use the user's language. Start with the decision being considered and the evidence needed to support it. This skill supports investigation and review; it does not certify safety, legality, solvency or suitability. Adapt screening questions to the specific industry, jurisdiction, transaction and review date. Never imply that a general checklist replaces specialist work.
 

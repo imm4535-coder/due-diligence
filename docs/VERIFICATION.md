@@ -6,4 +6,4 @@ DOM simulation passed: first render, fictional sample, material-risk hold gate, 
 
 Local HTTP checks returned 200 for the app, assessment engine module and plugin download, with the expected MIME types. The app has not been deployed publicly. The skills-only private ChatGPT plugin was saved and its skill/reference files were verified through the Plugin Creator connector. Saving is not the same as installation in every AI host.
 
-GitHub repository creation was attempted for `imm4535-coder/diligence-commons`; GitHub returned `GraphQL: Resource not accessible by integration (createRepository)`. Public upload and release remain blocked until an accessible empty repository is available. No public repository URL or deployment success is claimed.
+GitHub repository creation was attempted for `imm4535-coder/diligence-commons` (before the product was renamed Due Diligence); GitHub returned `GraphQL: Resource not accessible by integration (createRepository)`. Public upload and release remain blocked until an accessible empty repository is available. No public repository URL or deployment success is claimed.
