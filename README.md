@@ -2,6 +2,8 @@
 
 **ตรวจให้ชัด ก่อนตัดสินใจ · Evidence before confidence**
 
+**Ready-to-install bundle:** `release/due-diligence-ready-to-install.zip` contains the built app, Windows/macOS/Linux launchers, Codex/Claude Code skill installers, portable skill/plugin ZIPs and local MCP source. Extract it and read `เริ่มตรงนี้.md`. App launch needs an existing Node.js 20+ or Python 3.10+; the scripted skill installer needs Node.js 20+. No build, npm packages or API key is needed to use this bundle. Windows/macOS launchers are supplied as scripts and have not been run on those operating systems in this environment.
+
 Open-source due diligence workspace, portable AI skill and local MCP tools. Record sources, investigate 12 domains, track risk owners and export a traceable decision memo. Thai interface; bilingual domain names; AI skill responds in the user's language.
 
 **v0.1 is a screening starter.** Its 36 questions can be extended for the actual industry, jurisdiction and transaction. It does not perform registry searches, authenticate documents, run an LLM, approve transactions or provide professional certification. Evidence coverage measures completeness, never safety.

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "due-diligence": {
+      "command": "node",
+      "args": ["REPLACE_WITH_EXTRACTED_FOLDER/src/mcp.mjs"]
+    }
+  }
+}
